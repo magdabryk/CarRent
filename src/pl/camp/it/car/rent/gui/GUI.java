@@ -5,6 +5,7 @@ import pl.camp.it.car.rent.database.VehicleDB;
 import pl.camp.it.car.rent.model.Bus;
 import pl.camp.it.car.rent.model.Car;
 import pl.camp.it.car.rent.model.User;
+import pl.camp.it.car.rent.model.Vehicle;
 
 import java.util.Scanner;
 
@@ -19,7 +20,7 @@ public class GUI {
         System.out.println("4. Exit");
     }
 
-    public static void listCars(Car[] cars) {
+    /*public static void listCars(Car[] cars) {
         for(Car currentCar : cars) {
             System.out.println(currentCar.getBrand() + " " +
                     currentCar.getModel() + " " + currentCar.getPrice() + " " +
@@ -34,7 +35,23 @@ public class GUI {
                     currentBus.getSeats() + " " +
                     currentBus.getPlate() + " " + currentBus.isRent());
         }
-    }
+    }*/
+
+    public static void listVehicle(Vehicle[] vehicles) {
+        for(Vehicle currentVehicle : vehicles) {
+            String result = currentVehicle.getBrand() + " " +
+                    currentVehicle.getModel() + " "
+                    + currentVehicle.getPrice();
+            if(currentVehicle instanceof  Bus) {
+                result = result + ((Bus) currentVehicle).getSeats() + " ";
+            }
+           result = result +  currentVehicle.getPlate() + " " + currentVehicle.isRent();
+            System.out.println(result);
+            }
+
+        }
+
+
 
     public static User readLoginAndPassword() {
         Scanner scanner = new Scanner(System.in);
@@ -63,7 +80,7 @@ public class GUI {
                 car.setPlate(scanner.nextLine());
                 System.out.println("Price:");
                 car.setPrice(Double.parseDouble(scanner.nextLine()));
-                vehicleDB.addCar(car);
+                vehicleDB.addVehicle(car);
                 System.out.println("Car added !!");
                 break;
             case "2":
@@ -81,7 +98,7 @@ public class GUI {
                 bus.setPrice(Double.parseDouble(scanner.nextLine()));
                 System.out.println("Seats:");
                 bus.setSeats(Integer.parseInt(scanner.nextLine()));
-                vehicleDB.addBus(bus);
+                vehicleDB.addVehicle(bus);
                 System.out.println("Bus added !!");
                 break;
             default:

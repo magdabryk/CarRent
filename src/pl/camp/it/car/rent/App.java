@@ -19,8 +19,8 @@ public class App {
 
             switch(scanner.nextLine()) {
                 case "1":
-                    GUI.listCars(vehicleDB.getCars());
-                    GUI.listBuses(vehicleDB.getBuses());
+                    GUI.listVehicle(vehicleDB.getVehicles());
+
                     break;
                 case "2":
                     System.out.println("Plate:");
