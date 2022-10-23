@@ -4,6 +4,7 @@ import pl.camp.it.car.rent.Authenticator;
 import pl.camp.it.car.rent.database.UserDB;
 import pl.camp.it.car.rent.database.VehicleDB;
 import pl.camp.it.car.rent.gui.GUI;
+import pl.camp.it.car.rent.model.User;
 
 import java.util.Scanner;
 
@@ -33,7 +34,7 @@ public class Engine {
                     isWorking = false;
                     break;
                 case "3":
-                    if (Authenticator.loggedUser.getRole().equals("ADMIN")) {
+                    if (Authenticator.loggedUser.getRole().equals(User.Role.ADMIN)) {
                         GUI.addVehicle(vehicleDB);
                         break;
                     }
