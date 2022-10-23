@@ -12,11 +12,11 @@ public class Vehicle {
     public Vehicle() {
     }
 
-    public Vehicle(String brand, String model, int year, boolean rent, String plate, double price) {
+    public Vehicle(String brand, String model, int year,  String plate, double price) {
         this.brand = brand;
         this.model = model;
         this.year = year;
-        this.rent = rent;
+        this.rent = false;
         this.plate = plate;
         this.price = price;
     }
@@ -67,5 +67,16 @@ public class Vehicle {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    @Override
+    public String toString() {
+        return new StringBuilder().append(this.getBrand())
+                .append(" ")
+                .append(this.getModel())
+                .append(" ")
+                .append(this.getPrice())
+                .append(" ").append(this.getPlate())
+                .append(" Dostępny:  ").append(this.rent ? "nie" : "tak").toString();
     }
 }

@@ -1,7 +1,6 @@
 package pl.camp.it.car.rent.database;
 
-import org.apache.commons.codec.digest.DigestUtils;
-import pl.camp.it.car.rent.Authenticator;
+
 import pl.camp.it.car.rent.model.User;
 
 public class UserDB {

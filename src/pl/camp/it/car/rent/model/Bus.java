@@ -4,8 +4,8 @@ public class Bus extends Vehicle {
 
     private int seats;
 
-    public Bus(String brand, String model, int year, boolean rent, String plate, double price, int seats) {
-        super(brand, model, year, rent, plate, price);
+    public Bus(String brand, String model, int year, String plate, double price, int seats) {
+        super(brand, model, year,  plate, price);
         this.seats = seats;
     }
 
@@ -18,6 +18,11 @@ public class Bus extends Vehicle {
 
     public void setSeats(int seats) {
         this.seats = seats;
+    }
+
+    @Override
+    public String toString() {
+        return super.toString() + " Miejsca: " + this.seats;
     }
 }
 

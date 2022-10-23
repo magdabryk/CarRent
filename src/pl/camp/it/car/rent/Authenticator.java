@@ -2,6 +2,7 @@ package pl.camp.it.car.rent;
 
 import org.apache.commons.codec.digest.DigestUtils;
 import pl.camp.it.car.rent.database.UserDB;
+
 import pl.camp.it.car.rent.gui.GUI;
 import pl.camp.it.car.rent.model.User;
 
@@ -14,10 +15,9 @@ public class Authenticator {
         for(int i = 0; i < 3; i++) {
             User user = GUI.readLoginAndPassword();
             User userFromDB = userDB.findUserByLogin(user.getLogin());
-            String hashedUserPassword =
-                    DigestUtils.md5Hex(user.getPassword() + Authenticator.seed);
+
             if(userFromDB != null &&
-                    userFromDB.getPassword().equals(hashedUserPassword)) {
+                    userFromDB.equals(user)) {
                 Authenticator.loggedUser = userFromDB;
                 return true;
             }
