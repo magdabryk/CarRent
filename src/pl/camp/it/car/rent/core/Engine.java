@@ -5,32 +5,38 @@ import pl.camp.it.car.rent.database.UserDB;
 import pl.camp.it.car.rent.database.VehicleDB;
 import pl.camp.it.car.rent.gui.GUI;
 import pl.camp.it.car.rent.model.User;
+import pl.camp.it.car.rent.model.Vehicle;
 
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Engine {
-    public static void start() {
+    public static void start()  throws IOException {
         final VehicleDB vehicleDB = new VehicleDB();
         final UserDB userDB = new UserDB();
         boolean isWorking = Authenticator.authenticate(userDB);
-        final Scanner scanner = new Scanner(System.in);
+
 
         while (isWorking) {
             GUI.showMenu();
-            switch (scanner.nextLine()) {
+            switch (GUI.reader.readLine()) {
                 case "1":
+                    GUI.listVehicles(vehicleDB.getVehicles());
                   break;
                 case "2":
                    System.out.println("Plate:");
-                    if (vehicleDB.rentVehicle(scanner.nextLine())) {
+                    if (vehicleDB.rentVehicle(GUI.reader.readLine())) {
                         System.out.println("You have rent this vehicle !!!");
                     } else {
                         System.out.println("Rent error !!");
                     }
                     break;
                 case "4":
-                    scanner.close();
+                    GUI.reader.close();
                     isWorking = false;
+                    vehicleDB.presistToFile();
+                    userDB.presistToFile();
                     break;
                 case "3":
                     if (Authenticator.loggedUser.getRole().equals(User.Role.ADMIN)) {

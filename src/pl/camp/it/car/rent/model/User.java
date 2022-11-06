@@ -55,6 +55,20 @@ public class User {
         return this.login.equals(temp.login) &&
                 this.password.equals(DigestUtils.md5Hex(temp.password + Authenticator.seed));
     }
+
+    public String convertToData(){
+        return new StringBuilder()
+                .append(this.login)
+                .append(";")
+                .append(this.password)
+                .append(";")
+                .append(this.role)
+                .append(";")
+                .toString();
+
+
+    }
+
     public enum Role {
         ADMIN,
         USER

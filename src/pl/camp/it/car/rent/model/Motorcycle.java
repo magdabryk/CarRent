@@ -7,12 +7,20 @@ public class Motorcycle extends Vehicle{
     public Motorcycle() {
     }
 
-    public Motorcycle(String brand, String model, int year,  String plate, double price, boolean cart) {
-        super(brand, model, year, plate, price);
+    public Motorcycle(String brand, String model, int year, boolean rent, String plate, double price, boolean cart) {
+        super(brand, model, year, rent, plate, price);
         this.cart = cart;
     }
 
-
+    public Motorcycle(String[] params) {
+        super(params[1],
+                params[2],
+                Integer.parseInt(params[3]),
+                Boolean.parseBoolean(params[4]),
+                params[5],
+                Double.parseDouble(params[6]));
+        this.cart = Boolean.parseBoolean(params[7]);
+    }
 
     public boolean isCart() {
         return cart;
@@ -25,5 +33,10 @@ public class Motorcycle extends Vehicle{
     @Override
     public String toString() {
         return super.toString() + " Boczny wózek: " + (this.cart ? "tak" : "nie");
+    }
+
+    @Override
+    public String convertToData() {
+        return   super.convertToData() + ";" + this.cart;
     }
 }
