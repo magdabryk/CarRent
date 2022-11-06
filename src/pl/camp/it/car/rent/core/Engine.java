@@ -19,10 +19,9 @@ public class Engine {
             GUI.showMenu();
             switch (scanner.nextLine()) {
                 case "1":
-                    GUI.listVehicle(vehicleDB.getVehicles());
-                    break;
+                  break;
                 case "2":
-                    System.out.println("Plate:");
+                   System.out.println("Plate:");
                     if (vehicleDB.rentVehicle(scanner.nextLine())) {
                         System.out.println("You have rent this vehicle !!!");
                     } else {

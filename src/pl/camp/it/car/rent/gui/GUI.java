@@ -6,13 +6,14 @@ import pl.camp.it.car.rent.model.*;
 import pl.camp.it.car.rent.model.builder.MotorcycleBuilder;
 
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GUI {
     public static void showMenu() {
         System.out.println("1. List vehicles");
         System.out.println("2. Rent vehicle");
-        if (Authenticator.loggedUser.getRole().equals("ADMIN")) {
+        if (Authenticator.loggedUser.getRole().equals(User.Role.ADMIN)) {
             System.out.println("3. Add vehicle");
         }
 
@@ -20,7 +21,7 @@ public class GUI {
     }
 
 
-    public static void listVehicle(Vehicle[] vehicles) {
+    public static void listVehicle(ArrayList<Vehicle> vehicles) {
         for(Vehicle currentVehicle : vehicles) {
             System.out.println(currentVehicle);
         }

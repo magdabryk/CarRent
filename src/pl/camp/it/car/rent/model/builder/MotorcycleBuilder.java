@@ -3,7 +3,7 @@ package pl.camp.it.car.rent.model.builder;
 import pl.camp.it.car.rent.model.Motorcycle;
 
 public class MotorcycleBuilder {
-    private Motorcycle motorcycle = new Motorcycle();
+    private final Motorcycle motorcycle = new Motorcycle();
 
     public MotorcycleBuilder() {
         this.motorcycle.setRent(false);
