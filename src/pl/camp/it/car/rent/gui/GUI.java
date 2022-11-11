@@ -9,9 +9,7 @@ import pl.camp.it.car.rent.model.builder.MotorcycleBuilder;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
 
 public class GUI {
     public static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -21,7 +19,6 @@ public class GUI {
         if (Authenticator.loggedUser.getRole().equals(User.Role.ADMIN)) {
             System.out.println("3. Add vehicle");
         }
-
         System.out.println("4. Exit");
     }
 
@@ -71,10 +68,10 @@ public class GUI {
                 System.out.println("Model:");
                 bus.setModel(reader.readLine());
                 System.out.println("Year:");
-                bus.setYear(Integer.parseInt(reader.readLine())));
+                bus.setYear(Integer.parseInt(reader.readLine()));
                 bus.setRent(false);
                 System.out.println("Plate:");
-                bus.setPlate(reader.readLine()););
+                bus.setPlate(reader.readLine());
                 System.out.println("Price:");
                 bus.setPrice(Double.parseDouble(reader.readLine()));
                 System.out.println("Seats:");
@@ -95,7 +92,6 @@ public class GUI {
                 System.out.println("Price:");
                 System.out.println("Has cart (y/n: ");
                 mb.cart(reader.readLine().equals("y"));
-                Motorcycle motorcycle = mb.build();
                 System.out.println("Bus added !!");
                 break;
             default:
