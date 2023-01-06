@@ -6,11 +6,13 @@ import pl.camp.it.car.rent.model.User;
 import java.io.*;
 import java.util.*;
 
-public class UserDB {
+public class UserDB implements IUserDB{
     private final Map<String, User> users = new HashMap<>();
     private final String USER_DB_FILE = "users.txt";
 
-    public UserDB() {
+    private static final UserDB instance = new UserDB();  // nie da się stworzyć drugiego obiektu
+
+    private UserDB() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(USER_DB_FILE));
             String line;
@@ -42,7 +44,6 @@ public class UserDB {
                 if (flag) {
                     writer.newLine();
                 }
-                flag = true;
                 writer.write(user.convertToData());
             }
             writer.close();
@@ -50,15 +51,10 @@ public class UserDB {
             System.out.println("bład podczas zapisu");
             e.printStackTrace();
         }
+    }
 
-   /* public User findUserByLogin(String login) {
-        for(User user : this.users) {
-            if(user.getLogin().equals(login)) {
-                return user;
-            }
+        public static UserDB getInstance(){
+            return instance;
+        }
         }
 
-        return null;
-    }*/
-    }
-}

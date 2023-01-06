@@ -1,21 +1,21 @@
 package pl.camp.it.car.rent.core;
 
 import pl.camp.it.car.rent.Authenticator;
+import pl.camp.it.car.rent.database.IUserDB;
 import pl.camp.it.car.rent.database.UserDB;
+import pl.camp.it.car.rent.database.UserDB2;
 import pl.camp.it.car.rent.database.VehicleDB;
 import pl.camp.it.car.rent.gui.GUI;
 import pl.camp.it.car.rent.model.User;
-import pl.camp.it.car.rent.model.Vehicle;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Scanner;
+
 
 public class Engine {
+    private static final Engine instance = new Engine();
     public static void start()  throws IOException {
-        final VehicleDB vehicleDB = new VehicleDB();
-        final UserDB userDB = new UserDB();
-        boolean isWorking = Authenticator.authenticate(userDB);
+        final VehicleDB vehicleDB = VehicleDB.getInstance();
+        final IUserDB userDB = UserDB.getInstance();
+        boolean isWorking = Authenticator.authenticate();
 
 
         while (isWorking) {
@@ -37,6 +37,8 @@ public class Engine {
                     isWorking = false;
                     vehicleDB.presistToFile();
                     userDB.presistToFile();
+
+
                     break;
                 case "3":
                     if (Authenticator.loggedUser.getRole().equals(User.Role.ADMIN)) {

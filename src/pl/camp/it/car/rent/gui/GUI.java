@@ -12,7 +12,12 @@ import java.io.InputStreamReader;
 import java.util.List;
 
 public class GUI {
-    public static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+    private static  final GUI instance = new GUI();
+    private static final BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+    private GUI() {
+    }
+
     public static void showMenu() {
         System.out.println("1. List vehicles");
         System.out.println("2. Rent vehicle");
@@ -98,6 +103,14 @@ public class GUI {
                 System.out.println("Wrong choose !!");
                 break;
         }
+
+    }
+
+    public static GUI getInstance(){
+        return instance;
+    }
+    public static BufferedReader getReader(){
+        return reader;
     }
 }
 

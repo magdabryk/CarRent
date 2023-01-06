@@ -11,11 +11,12 @@ import java.io.*;
 
 import java.util.ArrayList;
 
-public class VehicleDB {
+public class VehicleDB implements IVechicleDB {
     private final ArrayList<Vehicle> vehicles = new ArrayList();
     private final String VEHICLE_DB_FILE = "vehicles.txt";
+    private static final VehicleDB instance = new VehicleDB();
 
-    public VehicleDB() {
+    private VehicleDB() {
         try {
             BufferedReader reader = new BufferedReader(new FileReader(VEHICLE_DB_FILE));
             String line;
@@ -86,6 +87,10 @@ public class VehicleDB {
         }
         return null;
     }
+public static VehicleDB getInstance() {
+        return instance;
+}
+
 }
 
 
